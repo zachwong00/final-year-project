@@ -1,0 +1,185 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# FYP Data Analysis with MLR
+```{r}
+library(dplyr)
+library(readr)
+CIRP <- read_csv("/Users/defamily/Downloads/CIRP - DATA COLLECTION (Responses) - Form Responses 1.csv")
+```
+## Removing excluded criteria responses
+```{r}
+CIRP_clean <- CIRP %>% 
+  filter(`What is your Nationality?` != "Non-Malaysian", 
+         `Have you played ONE (1) video game with loot box/gacha features in the past 3 months?` != "No",
+          `Have you opened at least ONE (1) loot box/gacha in the past 3 months?` != "No")
+
+View(CIRP_clean)
+```
+
+## Removing columns
+```{r}
+CIRP_clean <- CIRP_clean[, -c(1, 2)]
+
+## Reverse scoring columns 
+### Define columns to reverse
+reverse_cols = c("2. When I am upset I often act without thinking",
+                 "5. In the heat of an argument, I will often say things that I later regret",
+                 "6. I quite enjoy taking risks",
+                 "7. When overjoyed, I feel like I can't stop myself from going overboard",
+                 "9. I often make matters worse because I act without thinking when I am upset",
+                 "10. I generally seek new and exciting experiences and activities",
+                 "11. I tend to act without thinking when I am really excited",
+                 "13. I welcome new and exciting experiences and sensations, even if they are a little frightening and unconventional",
+                 "15. When I am very happy, I feel like it is OK to give into cravings or overindulge")
+```
+
+## Reverse code
+```{r}
+CIRP_clean[ , reverse_cols] = 5 - CIRP_clean[ , reverse_cols]
+```
+
+### Data edit
+```{r}
+data.frame(colnames(CIRP_clean))
+
+CIRP_clean <- CIRP_clean[, -c(65)]
+```
+
+## Compile scorings for each scales and subscales
+```{r}
+CIRP_clean$M1 <- rowSums(CIRP_clean[,c("1. For the excitement of seeing what will be inside","2. To get items or characters I find visually appealing",
+                                       "3. To get items or characters that make me feel good about myself","4. Because I like the feeling of winning when I get something good or rare",
+                                       "5. To try and get something personally valuable to me","6. Because it’s fun")], na.rm=TRUE)
+
+CIRP_clean$M2 <- rowSums(CIRP_clean[,c("7. To get past a hurdle or sticking point in the game",
+                                       "8. To get items or characters that will be useful or give me an advantage","9. Because I’ve had a failure or defeat in the game")], na.rm=TRUE)
+
+CIRP_clean$M3 <- rowSums(CIRP_clean[,c("10. Because my friends encourage or pressure me to", "11. So that I don’t get shamed or made fun of",
+                                       "12. Because I don’t want to feel left out")], na.rm=TRUE)
+
+CIRP_clean$M4 <- rowSums(CIRP_clean[,c("13. Because I am bored", "14. Because I can't stop myself",
+                                       "15. Because I get an urge to open them", "16. To take my mind off the real world or my day-to-day life")], na.rm=TRUE)
+
+CIRP_clean$M5 <- rowSums(CIRP_clean[,c("17. To support good causes", "18. To support the developer")], na.rm=TRUE)
+
+CIRP_clean$M6 <- rowSums(CIRP_clean[,c("19. Because there is an in-game event taking place",
+                                       "20. To get items or characters I’m collecting", "21.  Because I don’t want to miss the chance to get a limited time item or offer")], na.rm=TRUE)
+
+CIRP_clean$M7 <- rowSums(CIRP_clean[,c("22. To try and win items that I can make gaming currency out of", "23. To try and win items that I can make real money out of")], na.rm=TRUE)
+
+CIRP_clean$IP <- rowSums(CIRP_clean[,c("1. I usually think carefully before doing anything","2. When I am upset I often act without thinking",
+                         "3. I generally like to see things through to the end", "4. My thinking is usually careful and purposeful",
+                         "5. In the heat of an argument, I will often say things that I later regret", "6. I quite enjoy taking risks",
+                         "7. When overjoyed, I feel like I can't stop myself from going overboard", "8. Once I start a project, I almost always finish it",
+                         "9. I often make matters worse because I act without thinking when I am upset","10. I generally seek new and exciting experiences and activities",
+                         "11. I tend to act without thinking when I am really excited", "12. I am a productive person who always gets the job done",
+                         "13. I welcome new and exciting experiences and sensations, even if they are a little frightening and unconventional",
+                         "14. Before making up my mind, I consider all the advantages and disadvantages", "15. When I am very happy, I feel like it is OK to give into cravings or overindulge")], na.rm=TRUE)
+
+CIRP_clean$GC <- rowSums(CIRP_clean[,c("1.  I will never be able to stop gambling", "2. A series of losses will provide me with a learning experience that will help me win later",
+                                       "3. I’m not strong enough to stop gambling", "4. Specific numbers and/or colours help me win", "5. There are certain circumstances or situations that increase my chances of winning",
+                                       "6. My desire to gamble is so overpowering", "7. Gambling makes me happier", "8. Gambling makes the future seem brighter",
+                                       "9. My gambling wins prove that I have skills and knowledge related to gambling", "10. I collect specific objects that help increase my chance of winning",
+                                       "11. I have specific rituals and behaviors that increase my chance of winning", "12. Gambling makes things seem better")], na.rm=TRUE)
+
+CIRP_clean$RLB <- rowSums(CIRP_clean[,c("1. The thrill of opening Loot Boxes has encouraged me to buy more.","2. I frequently play games longer than I intend to, so I can earn Loot Boxes.",
+                                        "3. I have put off other activities, work, or chores to be able to earn or buy more Loot Boxes.", "4. Once I open a Loot Box, I often feel compelled to open another.",
+                                        "5.  I have bought more Loot Boxes after failing to receive valuable items")], na.rm=TRUE)
+```
+
+# Checking MLR assumptions
+```{r}
+library(tidyverse)
+library(broom)
+
+gacha.model <- lm(RLB ~ M1 + M2 + M3 + M4 + M5 + M6 + M7 + IP + GC, data = CIRP_clean)
+summary(gacha.model)
+
+par(mfrow=c(2,2))
+plot(gacha.model)
+```
+
+## Data Linearity
+```{r}
+plot(gacha.model,1)
+```
+## Normality of residuals (QQ plot)
+```{r}
+plot(gacha.model,2)
+```
+## Outliers (standard residuals > 3) and High Leverage points
+```{r}
+plot(gacha.model,3) # Homoscedasticity 
+plot(gacha.model,4) 
+plot(gacha.model,5)
+```
+## Cook's distance outliers
+```{r}
+cooksD <- cooks.distance(gacha.model)
+influential <- cooksD[(cooksD > (3 * mean(cooksD, na.rm = TRUE)))]
+observed_outliers <- names(influential)
+observed_outliers
+```
+### Remove outliers from dataframe
+```{r}
+outliers <- as.numeric(observed_outliers)
+CIRP2 <- CIRP_clean[-outliers, ]
+```
+## Check for multivariate outliers
+### Subset the independent variables (predictors) used in the model
+```{r}
+predictors <- CIRP2[, c("M1", "M2", "M3", "M4", "M5", "M6", "M7", "IP", "GC")]
+```
+
+### Compute Mahalanobis distance
+```{r}
+mahal_dist <- mahalanobis(predictors, colMeans(predictors), cov(predictors))
+```
+### View the Mahalanobis distances
+```{r}
+mahal_dist
+```
+
+## Identify outliers w/ chi-square distribution
+```{r}
+cutoff <- qchisq(0.98, df = ncol(predictors)) # 99% confidence level
+outliers <- which(mahal_dist > cutoff)
+outliers
+```
+
+## Removing MD outlier
+```{r}
+CIRP2 <- CIRP2[-outliers, ]
+```
+
+# New model
+```{r}
+gacha.model <- lm(RLB ~ M1 + M2 + M3 + M4 + M5 + M6 + M7 + IP + GC, data = CIRP2)
+summary(gacha.model)
+
+sigma(gacha.model)/mean(CIRP2$RLB)
+```
+### Check beta coefficients
+```{r}
+install.packages("lm.beta")
+library("lm.beta")
+lm.beta(gacha.model)
+lm(data.frame(scale(gacha.model$model)))
+```
+
+# Visualization
+```{r}
+library(ggplot2)
+library(reshape2)
+
+gacha.model %>%
+  augment() %>%
+  melt(measure.vars = c("M1", "M2", "M3", "M4", "M5", "M6", "M7", "IP", "GC"), variable.name = c("IV")) %>%
+  ggplot(., aes(x = value, y = RLB)) +
+  geom_smooth(method = "lm") +
+  facet_wrap(~IV, scales = "free_x")
+```
+
