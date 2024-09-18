@@ -31,7 +31,7 @@ The alternative hypotheses of this study are:
 ## Research Methods
 I conducted an online survey using Google Forms that employs a battery a five questionnaires that measures demographic information, independent factors (motivation, impulsivity and gambling cognitions) and risky loot box engagement. 
 
-Data analysis is done with R Studio, by performing Multiple Linear Regression (MLR) after data is cleaned and validated (348 observations).
+Data analysis is done with R Studio, by performing Multiple Linear Regression (MLR) after data is cleaned and validated (350 observations).
 
 ## Multiple Linear Regression Visualization
 Independent variables and their effects are controlled 
@@ -42,7 +42,7 @@ Independent variables and their effects are controlled
 The characteristics of this study’s participants are mostly male gamers (n = 229, 66.2%) with a mean age of 23.53 and mode of 25, predominantly Malay (n = 173, 50%) and being a student (n = 148, 42.8%). Moreover, participants mostly had an average two to four gaming hours per day (n = 124, 35.8%), followed by one to two hours per day (n = 110, 31.8%). Surprisingly, 71.6% of the current sample had spent some amount of money in video games, with the monthly spending range between RM 1 to RM 100 being the highest (n = 178, 51.4%).
 
 ### MLR Analysis
-![Screenshot 2024-09-18 at 6 41 00 PM](https://github.com/user-attachments/assets/fc2baadc-3d3b-48ab-8ac0-b4f473c4af62)
+![Screenshot 2024-09-18 at 6 51 12 PM](https://github.com/user-attachments/assets/c86f7cb9-3d63-4e24-9ee1-29eea57240c1)
 ![Screenshot 2024-09-18 at 6 42 21 PM](https://github.com/user-attachments/assets/cfad624f-a326-4b6a-91ab-024153d6dacb)
 
 The model shows a 42.2% significant variable effect on RLB, Gambling cognitions (GC)factor was found to be the strongest, significant predictor (β = .37, p < .001) for risky loot box engagement among Malaysian young adults. 
