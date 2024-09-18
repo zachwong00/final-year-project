@@ -13,6 +13,7 @@ Hence, the exposure to gambling-like elements/mechanics within games could in nd
 3. To investigate the predicting role of **gambling cognitions** on risky loot box engagement among Malaysian young adults.
 
 Independent Variables: Motivation factors, Impulsivity, Gambling Cognitions
+
 Dependent Variables: Risky Loot Box Engagement (RLB)
 
 ## Hypothesis Testing
