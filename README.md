@@ -1,6 +1,8 @@
 # Final Year Project
 An overview of my undergraduate thesis.
 
+### Behind the Loot: Understanding the Influence of Motivation, Impulsivity, and Gambling Cognitions in Risky Loot Box Engagement in Malaysia
+
 Risky and problematic behaviours within the realm of video gaming are increasing rapidly, where online gambling has surfaced in sectors of the Internet that traditionally had no association with gambling such as video games, social media and electronic sports (esports; Macey & Hamari, 2018). 
 
 Hence, the exposure to gambling-like elements/mechanics within games could in ndirectly normalise gambling activities, fostering more permissive attitudes and beliefs towards gambling itself. Some researchers further argues that they can act as a potential “gateway” to problematic gambling or further aggravate gaming or gambling related harms such as addiction, risky engagement and financial loss (Delfabbro & King, 2020; Montiel et al., 2022).
@@ -15,15 +17,15 @@ Dependent Variables: Risky Loot Box Engagement (RLB)
 
 ## Hypothesis Testing
 The alternative hypotheses of this study are:
-H1: **Enhancement motive** is a significant positive predictor to predict risky loot box engagement among Malaysian young adults.
-H2: **Progression motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
-H3: **Social pressure motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
-H4: **Distraction/compulsion motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
-H5: **Altruism motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
-H6: **Fear of missing out motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
-H7: **Resale motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
-H8: **Impulsivity** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
-H9: **Gambling cognitions** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
+- H1: **Enhancement motive** is a significant positive predictor to predict risky loot box engagement among Malaysian young adults.
+- H2: **Progression motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
+- H3: **Social pressure motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
+- H4: **Distraction/compulsion motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
+- H5: **Altruism motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
+- H6: **Fear of missing out motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
+- H7: **Resale motive** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
+- H8: **Impulsivity** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
+- H9: **Gambling cognitions** is a significant positive predictor for risky loot box engagement among Malaysian young adults.
 
 ## Research Methods
 I conducted an online survey using Google Forms that employs a battery a five questionnaires that measures demographic information, independent factors (motivation, impulsivity and gambling cognitions) and risky loot box engagement. 
