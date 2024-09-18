@@ -45,6 +45,6 @@ The characteristics of this study’s participants are mostly male gamers (n = 2
 ![Screenshot 2024-09-18 at 6 51 12 PM](https://github.com/user-attachments/assets/c86f7cb9-3d63-4e24-9ee1-29eea57240c1)
 ![Screenshot 2024-09-18 at 6 42 21 PM](https://github.com/user-attachments/assets/cfad624f-a326-4b6a-91ab-024153d6dacb)
 
-The model shows a 42.2% significant variable effect on RLB, Gambling cognitions (GC)factor was found to be the strongest, significant predictor (β = .37, p < .001) for risky loot box engagement among Malaysian young adults. 
+The model shows a 42.2% significant variable effect on RLB (Adjusted R square = .41, p < .05), Gambling cognitions (GC) factor was found to be the strongest, significant predictor (β = .37, p < .001) for risky loot box engagement among Malaysian young adults. 
 
 Other significant factors followed are Impuslvitiy (IP), Progression motive (M2), Distraction/compulsion motives (M4) and Fear of missing out (M6) motives in decreasing beta coefficients order. 
